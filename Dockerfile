@@ -5,6 +5,7 @@ RUN apk add --no-cache \
         mesa-dri-intel \
         mpv \
         pulseaudio \
+        ttf-dejavu \
      && adduser -u 1000 -D mpv \
      && mkdir -p /home/mpv/.config/pulse \
      && echo "default-server = unix:/run/user/1000/pulse/native" > /home/mpv/.config/pulse/client.conf \
