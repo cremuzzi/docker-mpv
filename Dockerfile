@@ -1,7 +1,6 @@
 FROM alpine:3.12
 
 RUN apk add --no-cache \
-        ffmpeg-libs \
         mesa-demos \
         mesa-dri-intel \
         mpv \
