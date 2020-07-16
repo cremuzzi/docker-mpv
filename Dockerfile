@@ -25,4 +25,6 @@ USER mpv
 
 WORKDIR /home/mpv
 
+VOLUME ["/home/mpv/media"]
+
 CMD ["mpv"]
