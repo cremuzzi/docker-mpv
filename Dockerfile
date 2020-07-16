@@ -10,6 +10,7 @@ RUN apk add --no-cache \
         pulseaudio \
         ttf-dejavu \
      && adduser -u 1000 -D mpv \
+     && mkdir -p /home/mpv/media \
      && mkdir -p /home/mpv/.config/pulse \
      && echo "default-server = unix:/run/user/1000/pulse/native" > /home/mpv/.config/pulse/client.conf \
      && echo "autospawn = no" >> /home/mpv/.config/pulse/client.conf \
