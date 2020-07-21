@@ -23,8 +23,8 @@ RUN apk add --no-cache \
 
 USER mpv
 
-WORKDIR /home/mpv
+WORKDIR /home/mpv/media
 
 VOLUME ["/home/mpv/media"]
 
-CMD ["mpv"]
+CMD ["ash"]
