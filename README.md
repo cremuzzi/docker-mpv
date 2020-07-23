@@ -39,7 +39,7 @@ docker run --rm -i -t \
 ```
 
 The difference here is that we are not mounting any media folder from the host.
-In this example we are running a container with the custom command "mpv <yt-video-url>", then mpv will take care of everything for you.
+In this example we are running a container with the custom command "mpv yt-video-url", then mpv will take care of everything for you.
 
 ## Further reading
 
