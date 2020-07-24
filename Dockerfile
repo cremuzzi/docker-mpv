@@ -4,6 +4,7 @@ LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.label-schema.vcs-url="https://github.com/cremuzzi/docker-mpv"
 
 RUN apk add --no-cache \
+        ffmpeg \
         mesa-demos \
         mesa-dri-intel \
         mpv \
