@@ -10,7 +10,10 @@ RUN apk add --no-cache \
         mpv \
         pulseaudio \
         ttf-dejavu \
-        youtube-dl \
+        python3 \
+     && ln -s python3 /usr/bin/python \
+     && wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl \
+     && chmod a+rx /usr/local/bin/youtube-dl \
      && adduser -u 1000 -D mpv \
      && mkdir -p /home/mpv/media \
      && mkdir -p /home/mpv/.config/pulse \
