@@ -6,7 +6,7 @@
 docker run --rm -i -t \
     --device /dev/dri \
     --network host \
-    -e DISPLAY=$DISPLAY \
+    -e DISPLAY \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /run/user/1000/pulse:/run/user/1000/pulse \
     -v $HOME/.Xauthority:/home/mpv/.Xauthority \
@@ -31,7 +31,7 @@ The image comes with **youtube-dl** as well. So you can play YT content directly
 docker run --rm -i -t \
     --device /dev/dri \
     --network host \
-    -e DISPLAY=$DISPLAY \
+    -e DISPLAY \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /run/user/1000/pulse:/run/user/1000/pulse \
     -v $HOME/.Xauthority:/home/mpv/.Xauthority \
