@@ -5,11 +5,8 @@ on:
     branches: [ develop ]
 
 jobs:
-
   build:
-
-    runs-on: library/docker:20.10.3
-
+    runs-on: ubuntu-20.4
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
