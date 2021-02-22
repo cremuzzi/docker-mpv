@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+
+  build:
+
+    runs-on: library/docker:20.10.3
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag mpv:$(date +%s)
