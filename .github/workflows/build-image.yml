@@ -1,0 +1,21 @@
+name: Container image build
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "./Dockerfile"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "./Dockerfile"
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the container image
+      run: docker build . -f ./Dockerfile -t mpv:$(date +%s)
