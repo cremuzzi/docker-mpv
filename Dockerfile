@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.label-schema.description="Dockerization of mpv.io"
@@ -12,8 +12,8 @@ RUN apk add --no-cache \
     mesa-dri-intel \
     mpv \
     pulseaudio \
-    ttf-dejavu \
     python3 \
+    ttf-dejavu \
   && ln -s python3 /usr/bin/python \
   && wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl \
   && chmod a+rx /usr/local/bin/youtube-dl \
