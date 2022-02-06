@@ -5,12 +5,12 @@ on:
     branches:
       - master
     paths:
-      - "./Dockerfile"
+      - "Dockerfile"
   pull_request:
     branches:
       - master
     paths:
-      - "./Dockerfile"
+      - "Dockerfile"
 
 jobs:
   build:
