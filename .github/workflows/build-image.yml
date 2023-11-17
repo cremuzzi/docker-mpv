@@ -1,21 +1,21 @@
-name: Container image build
+# name: Container image build
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - "Dockerfile"
-  pull_request:
-    branches:
-      - master
-    paths:
-      - "Dockerfile"
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - "Dockerfile"
+#   pull_request:
+#     branches:
+#       - master
+#     paths:
+#       - "Dockerfile"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the container image
-      run: docker build . -f ./Dockerfile -t mpv:$(date +%s)
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Build the container image
+#       run: docker build . -f ./Dockerfile -t mpv:$(date +%s)
