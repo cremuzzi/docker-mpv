@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.20
 
 LABEL maintainer="Carlos Remuzzi <carlosremuzzi@gmail.com>"
 LABEL org.label-schema.description="Containerization of mpv.io"
@@ -10,18 +10,15 @@ ARG YTDL_VERSION=2024.08.07
 
 RUN apk add --no-cache \
     ffmpeg \
-    mesa-demos \
-    mesa-dri-intel \
+    mesa-dri-gallium \
     mpv \
     pulseaudio \
     python3 \
     ttf-dejavu \
-  && ln -s python3 /usr/bin/python \
   && wget https://github.com/ytdl-org/ytdl-nightly/releases/download/${YTDL_VERSION}/youtube-dl \
           -O /usr/local/bin/youtube-dl \
   && chmod 0755 /usr/local/bin/youtube-dl \
   && adduser -u 1000 -D mpv \
-  && mkdir -p /home/mpv/media \
   && mkdir -p /home/mpv/.config/pulse \
   && echo "default-server = unix:/run/user/1000/pulse/native" > /home/mpv/.config/pulse/client.conf \
   && echo "autospawn = no" >> /home/mpv/.config/pulse/client.conf \
@@ -34,8 +31,6 @@ RUN apk add --no-cache \
 
 USER mpv
 
-WORKDIR /home/mpv/media
+WORKDIR /home/mpv/
 
-VOLUME ["/home/mpv/media"]
-
-CMD ["ash"]
+CMD ["/bin/ash"]
