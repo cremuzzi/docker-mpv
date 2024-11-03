@@ -1,4 +1,4 @@
-name: Container image build
+name: Buildah Build
 
 on:
   push:
@@ -12,6 +12,7 @@ on:
       - master
     paths:
       - "Containerfile"
+
 jobs:
   build:
     name: Build image
@@ -20,10 +21,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: redhat-actions/buildah-build@v2
-      name: Buildah action
+    # https://github.com/redhat-actions/buildah-build
+    - name: Buildah build
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
       with:
-        image: ${{ github.repository }}
-        tags: ${{ github.sha }}
+        image: mpv
+        tags: latest ${{ github.ref_name }}
         containerfiles: |
           ./Containerfile
