@@ -24,9 +24,13 @@ Once you are there, you can just explore the folder and play the media file that
 Please notice in the example above that we are mounting a few volumes that allow your container to
 connect as a client to your host's pulseaudio and Xorg server.
 
-## youtube-dl
+## yt-dl
 
-The image comes with **youtube-dl** as well. So you can play YT content directly like this:
+This image comes with **yt-dl** installed.
+You can play yt-dl supported content via
+running this image with command `mpv https://media/url/`.
+
+Eg.:
 
 ```sh
 docker run --rm -i -t \
@@ -36,11 +40,10 @@ docker run --rm -i -t \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /run/user/1000/pulse:/run/user/1000/pulse \
     -v $HOME/.Xauthority:/home/mpv/.Xauthority \
-    cremuzzi/mpv mpv http://youtube.com/watch?v=yt-video-id
+    cremuzzi/mpv mpv https://media/url/
 ```
 
-The difference here is that we are not mounting any media folder from the host.
-In this example we are running a container with the custom command "mpv yt-video-url", then mpv will take care of everything for you.
+As long as your media url is retrievable by yt-dl then mpv should take care of reproducing it.
 
 ## Further reading
 

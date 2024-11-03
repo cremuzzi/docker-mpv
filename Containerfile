@@ -6,6 +6,8 @@ LABEL org.label-schema.name="mpv"
 LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.vcs-url="https://github.com/cremuzzi/docker-mpv"
 
+ARG YTDL_VERSION=2024.08.07
+
 RUN apk add --no-cache \
     ffmpeg \
     mesa-demos \
@@ -15,8 +17,9 @@ RUN apk add --no-cache \
     python3 \
     ttf-dejavu \
   && ln -s python3 /usr/bin/python \
-  && wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/local/bin/youtube-dl \
-  && chmod 755 /usr/local/bin/youtube-dl \
+  && wget https://github.com/ytdl-org/ytdl-nightly/releases/download/${YTDL_VERSION}/youtube-dl \
+          -O /usr/local/bin/youtube-dl \
+  && chmod 0755 /usr/local/bin/youtube-dl \
   && adduser -u 1000 -D mpv \
   && mkdir -p /home/mpv/media \
   && mkdir -p /home/mpv/.config/pulse \
