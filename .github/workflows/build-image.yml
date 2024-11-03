@@ -1,21 +1,32 @@
-name: Container image build
+name: Buildah Build
 
 on:
   push:
     branches:
+      - develop
       - master
     paths:
-      - "Dockerfile"
+      - "Containerfile"
   pull_request:
     branches:
       - master
     paths:
-      - "Dockerfile"
+      - "Containerfile"
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    name: Build image
+    runs-on: ubuntu-24.04
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the container image
-      run: docker build . -f ./Dockerfile -t mpv:$(date +%s)
+    - uses: actions/checkout@v4
+
+    # https://github.com/redhat-actions/buildah-build
+    - name: Buildah build
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: mpv
+        tags: latest ${{ github.ref_name }}
+        containerfiles: |
+          ./Containerfile
